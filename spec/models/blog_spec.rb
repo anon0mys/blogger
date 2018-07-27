@@ -5,4 +5,8 @@ RSpec.describe Blog, type: :model do
     it { should validate_presence_of :title }
     it { should validate_presence_of :body }
   end
+
+  context 'relationships' do
+    it { should belong_to :user }
+  end
 end
