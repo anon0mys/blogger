@@ -29,10 +29,10 @@ class BlogsController < ApplicationController
   end
 
   def update
-    @blog = Blog.new(blog_params)
-    if @blog.save
+    @blog = Blog.find(params[:id])
+    if @blog.update(blog_params)
       flash[:success] = 'Blog was successfully updated.'
-      redirect_to blogs_path
+      redirect_to blog_path(@blog)
     else
       flash[:fail] = 'Blog was not created'
       redirect_to new_blog_path
@@ -52,6 +52,6 @@ class BlogsController < ApplicationController
 
   private
     def blog_params
-      params.fetch(:blog, {})
+      params.require(:blog).permit(:title, :body)
     end
 end

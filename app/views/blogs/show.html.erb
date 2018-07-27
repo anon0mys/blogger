@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
 
+<h3>Title: <%= @blog.title %></h3>
+<p>Body: <%= @blog.body %></p>
+<p>User: <%= @blog.user.email %></p>
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>
